@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Azərbaycan Beynəlxalq Maarif | MAGİS (16.05.2026) Nəticələri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#00525d',
+                            dark: '#00525d',
+                            hover: '#003f47',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        .bg-primary-dark { background-color: #00525d; }
+        .bg-primary-hover { background-color: #003f47; }
+        .text-primary-dark { color: #00525d; }
+        .border-primary-dark { border-color: #00525d; }
+        .focus-ring-primary { --tw-ring-color: #00525d; }
+
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            box-sizing: border-box;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            background-color: #00525d;
+            color: #fcfcfc;
+            transition: background-color 0.3s, color 0.3s;
+            padding-top: 220px !important;
+        }
+
+        @media (min-width: 640px) {
+            body { padding-top: 210px !important; }
+        }
+
+        .dark body {
+            background-color: #1a202c;
+            color: #fcfcfc;
+        }
+
+        .header-bg {
+            background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .dark .text-header-title { color: #fcfcfc; }
+        .text-tmv { color: #4a5568; }
+        .dark .text-tmv { color: #fcfcfc; }
+        .dark #query-card { background-color: #2d3748; border: 1px solid #4a5568; }
+        .dark .form-label { color: #fcfcfc; }
+        .dark .form-input-bg { background-color: #4a5568; color: #fcfcfc; border-color: #4a5568; }
+        .dark .text-primary-dark-override { color: #4fd1c5; }
+        .dark .bg-primary-dark-override { background-color: #4fd1c5; }
+        .dark .bg-primary-dark-override:hover { background-color: #38b2ac; }
+        .dark #toast-content { background-color: #2d3748; }
+        .logo-border { border-color: #00adba; }
+        .shadow-3xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1); }
+
+        #resultFrame {
+            width: 100%;
+            height: 85vh;
+            border: none;
+            border-radius: 0.75rem;
+        }
+
+        .custom-select-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23ffffff'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1.5em 1.5em;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            padding-right: 2.5rem;
+        }
+
+        .form-input-bg {
+            background-color: #fcfcfc;
+            color: #1f2937;
+            border: 1px solid #d1d5db;
+        }
+
+        .dark .custom-select-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%231f2937'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath%3e%3c/svg%3e");
+        }
+
+        #toast { z-index: 100; }
+        .header-title-text { font-size: 1.1rem; }
+        @media (min-width: 640px) { .header-title-text { font-size: 1.5rem; } }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .loading-logo { animation: spin 1.5s linear infinite; }
+
+        .student-info-card {
+            background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
+            font-family: 'Poppins', sans-serif;
+        }
+        .dark .student-info-card { background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%); }
+        .student-info-card .bg-white { background-color: #00525d !important; border-color: #003f47 !important; }
+
+        .student-info-card .bg-white span,
+        .student-info-card .text-xs,
+        .student-info-card #student-class,
+        .student-info-card #student-id-display,
+        .student-info-card #exam-name-display {
+            color: #ffffff !important;
+        }
+
+        .student-info-card #student-fullname { color: #00525d !important; }
+        .dark .student-info-card #student-fullname { color: #ffffff !important; }
+        .student-info-card h4 { color: #4a5568 !important; }
+        .dark .student-info-card h4 { color: #cbd5e0 !important; }
+
+        .dark .student-info-card h4,
+        .dark .student-info-card #student-fullname,
+        .dark .student-info-card #student-class,
+        .dark .student-info-card #student-id-display,
+        .dark .student-info-card #exam-name-display,
+        .dark .student-info-card .text-xs {
+            color: #ffffff !important;
+        }
+
+        .student-info-card h4 { font-weight: 500 !important; }
+        .student-info-card #student-fullname,
+        .student-info-card #student-class,
+        .student-info-card #student-id-display,
+        .student-info-card #exam-name-display {
+            font-weight: 600 !important;
+        }
+
+        .student-info-card #exam-name-display { color: #4fd1c5 !important; }
+        .dark .student-info-card #exam-name-display { color: #4fd1c5 !important; }
+
+        .nav-btn {
+            transition: all 0.3s ease;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-btn.active {
+            background-color: #00525d;
+            color: white;
+        }
+
+        .dark .nav-btn.active {
+            background-color: #4fd1c5;
+            color: #00525d;
+        }
+
+        .nav-btn:not(.active) {
+            background-color: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .dark .nav-btn:not(.active) {
+            background-color: #374151;
+            color: #d1d5db;
+        }
+
+        .nav-btn:hover:not(.active) {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .dark .faq-item {
+            border-bottom: 1px solid #4b5563;
+        }
+
+        .faq-question {
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background-color: #f9fafb;
+        }
+
+        .dark .faq-question:hover {
+            background-color: #374151;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-answer.open {
+            max-height: 1500px;
+        }
+
+        .panel-section {
+            display: block;
+        }
+
+        .panel-section.hidden {
+            display: none;
+        }
+
+        .faq-number {
+            color: #00525d;
+        }
+
+        .dark .faq-number {
+            color: #ffffff;
+        }
+
+        .theme-toggle-circle {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            background-color: #00525d;
+        }
+        .dark .theme-toggle-circle { background-color: #ffffff; }
+        .theme-toggle-circle:hover { transform: scale(1.1); box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+
+        #moon-icon, #sun-icon { stroke: #ffffff !important; }
+        .dark #moon-icon, .dark #sun-icon { stroke: #00525d !important; }
+
+        .validation-icon {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+        .validation-icon.show { opacity: 1; }
+
+        #live-time {
+            font-variant-numeric: tabular-nums;
+            text-shadow: 0 0 10px rgba(0, 82, 93, 0.1);
+        }
+        .dark #live-time { text-shadow: 0 0 10px rgba(79, 209, 197, 0.2); }
+        .time-container { display: flex; align-items: center; gap: 0.5rem; white-space: nowrap; }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-container {
+            width: 90%;
+            max-width: 900px;
+            height: 85vh;
+            max-height: 85vh;
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+        .dark .modal-container {
+            background: #1f2937;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            background-color: #00525d;
+            color: white;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        .dark .modal-header {
+            background-color: #0f3b42;
+        }
+        .modal-header h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.8rem;
+            line-height: 1;
+            transition: transform 0.2s;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        .modal-close:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: scale(1.05);
+        }
+        .modal-iframe {
+            flex: 1;
+            width: 100%;
+            border: none;
+            background: white;
+        }
+        .dark .modal-iframe {
+            background: #1f2937;
+        }
+    </style>
+</head>
+
+<body class="bg-primary-dark">
+
+    <div class="bg-yellow-500 text-gray-900 font-bold py-2 text-center text-xs sm:text-sm md:text-base tracking-wider fixed top-0 left-0 w-full z-50 flex items-center justify-center gap-2 shadow-md">
+        <span>🎓</span>
+        <span>MAGİS (16.05.2026) İMTAHAN NƏTİCƏLƏRİ</span>
+        <span class="bg-gray-900 text-yellow-400 text-[10px] px-2 py-0.5 rounded-full font-extrabold animate-pulse">AKTİV</span>
+    </div>
+
+    <header class="bg-white/20 dark:bg-black/30 header-bg shadow-xl fixed top-[36px] sm:top-[40px] left-0 w-full z-50 backdrop-blur-xl border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3 sm:space-x-5">
+                <img id="school-logo" src="https://i.imgur.com/a3FuVV8.png" alt="Okul Logosu"
+                    class="w-16 h-16 sm:w-20 sm:h-20 object-contain rounded-full border-2 logo-border p-1"
+                    onerror="this.onerror=null; this.src='https://placehold.co/80x80/ccc/333?text=Logo';" />
+                
+                <div class="flex flex-col items-start leading-tight">
+                    <div class="flex items-center space-x-1.5 mb-1">
+                        <div class="flex items-center space-x-0.5 flex-shrink-0">
+                            <img src="https://flagcdn.com/tr.svg" alt="TR" class="w-5 h-auto shadow-sm"
+                                style="border: 0.5px solid rgba(0,0,0,0.1); border-radius: 1px;">
+                            <img src="https://flagcdn.com/az.svg" alt="AZ" class="w-5 h-auto shadow-sm"
+                                style="border: 0.5px solid rgba(0,0,0,0.1); border-radius: 1px;">
+                        </div>
+                        <span class="text-xs sm:text-sm font-medium text-tmv whitespace-nowrap">
+                            Türkiyə Maarif Vəqfi
+                        </span>
+                    </div>
+
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <h1 class="header-title-text font-normal text-gray-900 text-header-title tracking-tight">
+                            Azərbaycan Beynəlxalq Maarif Məktəbləri
+                        </h1>
+                        <div class="flex gap-1 sm:gap-2 flex-wrap mt-1">
+                            <span class="text-[10px] sm:text-xs text-gray-600 bg-gray-100 dark:bg-gray-700 dark:text-gray-200 px-2 py-0.5 rounded-full font-medium whitespace-nowrap">
+                                Nəsimi Kampusu
+                            </span>
+                            <span class="text-[10px] sm:text-xs text-gray-600 bg-gray-100 dark:bg-gray-700 dark:text-gray-200 px-2 py-0.5 rounded-full font-medium whitespace-nowrap">
+                                Gənclik Kampusu
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="theme-toggle-circle">
+                <button id="theme-toggle" onclick="toggleTheme()"
+                    class="p-2 rounded-full text-gray-700 dark:text-gray-200 transition duration-300">
+                    <svg id="sun-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z">
+                        </path>
+                    </svg>
+                    <svg id="moon-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="bg-white/10 dark:bg-black/20 backdrop-blur-md border-b border-white/10 fixed top-[160px] sm:top-[155px] left-0 w-full z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
+            <div class="flex justify-center items-center">
+                <div class="time-container">
+                    <div id="live-time" class="text-sm sm:text-xl font-bold text-white tabular-nums">
+                        00:00:00
+                    </div>
+                    <span class="text-white/60 mx-2">•</span>
+                    <div id="live-date"
+                        class="text-xs sm:text-base uppercase font-semibold text-white/80 whitespace-nowrap">
+                        ---
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="flex flex-wrap gap-4 justify-center">
+            <button id="nav-search" class="nav-btn active" onclick="showSection('search-section')">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                Nəticə Axtarışı
+            </button>
+            <button id="nav-faq" class="nav-btn" onclick="showSection('faq-section')">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                    </path>
+                </svg>
+                Suallar
+            </button>
+            <button id="nav-apply" class="nav-btn" onclick="openApplicationModal()">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 9h6m-6 3h6m-6 3h6M3 6h6a2 2 0 012 2v8a2 2 0 01-2 2H3a1 1 0 01-1-1V7a1 1 0 011-1z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h.01"></path>
+                </svg>
+                Müraciət Et
+            </button>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div id="search-section" class="panel-section">
+            <div class="flex flex-col lg:flex-row items-start justify-center gap-8">
+                <div class="w-full lg:w-1/2 mx-auto">
+                    <div id="query-card"
+                        class="w-full bg-white p-8 sm:p-12 rounded-2xl shadow-3xl transition-all duration-300">
+                        <div class="text-center mb-8">
+                            <h2
+                                class="text-xl sm:text-2xl font-semibold text-primary-dark text-primary-dark-override mb-3 leading-tight">
+                                MAGİS (16.05.2026) Nəticə Yoxlama Sistemi
+                            </h2>
+                            <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Zəhmət olmasa imtahan verdiyiniz kampusu seçin və 10 rəqəmli ID nömrənizi daxil edin.</p>
+                        </div>
+                        <form id="resultForm" class="space-y-7" onsubmit="event.preventDefault(); viewResult();">
+                            <div>
+                                <label for="exam" class="block text-sm font-normal text-gray-700 form-label mb-1">Kampusu Seçin</label>
+                                <div class="relative">
+                                    <select id="exam" required
+                                        class="custom-select-icon block w-full px-4 py-3 border border-gray-300 rounded-xl shadow-md form-input-bg focus:outline-none focus:ring-2 focus:ring-[#00525d] focus:ring-offset-0 focus-ring-primary text-base transition duration-150 ease-in-out">
+                                        <option value="" disabled selected>Kampusu seçin</option>
+                                        <option value="nesimi">Nəsimi Kampusu</option>
+                                        <option value="genclik">Gənclik Kampusu</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="id" class="block text-sm font-normal text-gray-700 form-label mb-1">Şagird ID nömrəsi (10 rəqəmli)</label>
+                                <div class="relative">
+                                    <input type="tel" id="id" required
+                                        class="appearance-none block w-full px-4 py-3 rounded-xl shadow-md form-input-bg placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#00525d] focus:ring-offset-0 focus-ring-primary text-base transition duration-150 ease-in-out"
+                                        placeholder="XXXXXXXXXX" pattern="\d{10}" maxlength="10" inputmode="numeric"
+                                        oninput="validateID(this)">
+                                    <div id="id-validation" class="validation-icon">
+                                        <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor"
+                                            viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                                d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <input type="checkbox" id="remember-me"
+                                    class="w-4 h-4 text-primary-dark border-gray-300 rounded focus:ring-primary">
+                                <label for="remember-me" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">ID nömrəni yadda saxla</label>
+                            </div>
+                            <div>
+                                <button type="submit" id="search-btn"
+                                    class="w-full flex justify-center items-center py-3.5 px-4 border border-transparent rounded-xl shadow-lg text-lg font-normal text-white bg-primary-dark bg-primary-dark-override hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00525d] transition duration-300 ease-in-out transform hover:scale-[1.01] hover:shadow-xl">
+                                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                    Nəticəni Axtar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="result-container" class="hidden w-full mt-8 transition-opacity duration-500 opacity-0">
+                        <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-3xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+                            <div class="bg-primary-dark bg-primary-dark-override px-6 py-4 border-b border-primary-hover flex flex-wrap justify-between items-center">
+                                <h3 class="text-xl font-normal text-white">Şagirdin Nəticəsinə Baxış</h3>
+                                <div class="flex space-x-3 mt-2 sm:mt-0">
+                                    <button onclick="downloadResult()"
+                                        class="text-sm px-4 py-2 bg-yellow-500 text-gray-900 rounded-lg font-normal hover:bg-yellow-600 transition flex items-center shadow-md transform hover:scale-[1.05]">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+                                            </path>
+                                        </svg>
+                                        Yüklə
+                                    </button>
+                                    <button onclick="resetSearch()"
+                                        class="text-sm px-4 py-2 bg-gray-600 text-white rounded-lg font-normal hover:bg-gray-700 transition flex items-center shadow-md">
+                                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                                        </svg>
+                                        Yeni Axtarış
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div id="student-info-section"
+                                class="p-6 border-b border-gray-200 dark:border-gray-600 student-info-card hidden">
+                                <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6">
+                                    <div class="flex-shrink-0">
+                                        <img src="https://i.imgur.com/a3FuVV8.png" alt="Okul Logosu"
+                                            class="w-16 h-16 object-contain rounded-full border-2 logo-border p-1 shadow-lg"
+                                            onerror="this.onerror=null; this.src='https://placehold.co/64x64/ccc/333?text=Logo';" />
+                                    </div>
+                                    <div class="text-center sm:text-left flex-1">
+                                        <h4 class="text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide">Şagirdin Adı və Soyadı</h4>
+                                        <p id="student-fullname" class="text-2xl font-bold text-gray-900 dark:text-white mt-1">Məlumat yüklənir...</p>
+                                        <div class="flex flex-wrap justify-center sm:justify-start gap-4 mt-3">
+                                            <div class="bg-white dark:bg-gray-700 px-3 py-1 rounded-lg border border-gray-200 dark:border-gray-600 shadow-sm">
+                                                <span class="text-xs text-gray-500 dark:text-gray-400">Sinif:</span>
+                                                <span id="student-class" class="ml-1 font-bold text-gray-800 dark:text-gray-200">IV (V sinfə qəbul)</span>
+                                            </div>
+                                            <div class="bg-white dark:bg-gray-700 px-3 py-1 rounded-lg border border-gray-200 dark:border-gray-600 shadow-sm">
+                                                <span class="text-xs text-gray-500 dark:text-gray-400">ID Nömrəsi:</span>
+                                                <span id="student-id-display" class="ml-1 font-bold text-gray-800 dark:text-gray-200">--</span>
+                                            </div>
+                                            <div class="bg-white dark:bg-gray-700 px-3 py-1 rounded-lg border border-gray-200 dark:border-gray-600 shadow-sm">
+                                                <span class="text-xs text-gray-500 dark:text-gray-400">Kampus:</span>
+                                                <span id="exam-name-display" class="ml-1 font-bold text-primary-dark text-primary-dark-override">--</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="p-2 bg-gray-100 dark:bg-gray-700">
+                                <iframe id="resultFrame" src="" allowfullscreen class="w-full h-96"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="faq-section" class="panel-section hidden">
+            <div class="w-full lg:w-3/4 mx-auto">
+                <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-3xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <div class="bg-primary-dark bg-primary-dark-override px-6 py-4 border-b border-primary-hover">
+                        <h3 class="text-xl font-normal text-white flex items-center">
+                            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                                </path>
+                            </svg>
+                            Tez-tez verilən suallar
+                        </h3>
+                    </div>
+                    <div class="p-8">
+                        <div class="space-y-4" id="faq-accordion">
+                            <div class="faq-item">
+                                <div class="faq-question cursor-pointer p-4 rounded-lg bg-gray-50 dark:bg-gray-700 flex justify-between items-center" onclick="toggleFAQ(1)">
+                                    <div class="flex items-center"><span class="text-lg font-bold faq-number mr-3">1.</span><span class="text-gray-800 dark:text-gray-200 font-medium">MAGİS (16.05.2026) imtahan nəticələrimi necə yoxlaya bilərəm?</span></div>
+                                    <svg id="faq-icon-1" class="w-5 h-5 text-gray-500 dark:text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                                <div id="faq-answer-1" class="faq-answer"><div class="p-4 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300">Cavab: İmtahan verdiyiniz kampusu (Nəsimi və ya Gənclik) seçin, şagirdin 10 rəqəmli ID nömrəsini daxil edin və "Nəticəni Axtar" düyməsinə klikləyin.</div></div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question cursor-pointer p-4 rounded-lg bg-gray-50 dark:bg-gray-700 flex justify-between items-center" onclick="toggleFAQ(2)">
+                                    <div class="flex items-center"><span class="text-lg font-bold faq-number mr-3">2.</span><span class="text-gray-800 dark:text-gray-200 font-medium">Şagird ID nömrəmi haradan tapa bilərəm?</span></div>
+                                    <svg id="faq-icon-2" class="w-5 h-5 text-gray-500 dark:text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                                <div id="faq-answer-2" class="faq-answer"><div class="p-4 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300">Cavab: ID imtahana buraxılış vərəqəsində qeyd olunur.</div></div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question cursor-pointer p-4 rounded-lg bg-gray-50 dark:bg-gray-700 flex justify-between items-center" onclick="toggleFAQ(3)">
+                                    <div class="flex items-center"><span class="text-lg font-bold faq-number mr-3">3.</span><span class="text-gray-800 dark:text-gray-200 font-medium">Nəticədə qeyd edilən məlumatlar nəyi ifadə edir?</span></div>
+                                    <svg id="faq-icon-3" class="w-5 h-5 text-gray-500 dark:text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                                <div id="faq-answer-3" class="faq-answer"><div class="p-4 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300">Cavab: Sənəddə doğru cavablar, şagirdin cavabları, bal və sıralama göstərilir.</div></div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question cursor-pointer p-4 rounded-lg bg-gray-50 dark:bg-gray-700 flex justify-between items-center" onclick="toggleFAQ(4)">
+                                    <div class="flex items-center"><span class="text-lg font-bold faq-number mr-3">4.</span><span class="text-gray-800 dark:text-gray-200 font-medium">Nəticələrimi çap edə və ya yükləyə bilərəmmi?</span></div>
+                                    <svg id="faq-icon-4" class="w-5 h-5 text-gray-500 dark:text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                                <div id="faq-answer-4" class="faq-answer"><div class="p-4 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300">Cavab: Bəli, "Yüklə" düyməsi ilə yükləyə bilərsiniz.</div></div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question cursor-pointer p-4 rounded-lg bg-gray-50 dark:bg-gray-700 flex justify-between items-center" onclick="toggleFAQ(5)">
+                                    <div class="flex items-center"><span class="text-lg font-bold faq-number mr-3">5.</span><span class="text-gray-800 dark:text-gray-200 font-medium">Təqaüd qazanıb-qazanmadığımı necə öyrənə bilərəm?</span></div>
+                                    <svg id="faq-icon-5" class="w-5 h-5 text-gray-500 dark:text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                                <div id="faq-answer-5" class="faq-answer"><div class="p-4 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300">Cavab: Təqaüd qazananlarla əlaqə saxlanılacaq. Qazanmasanız da təhsil ala bilərsiniz.</div></div>
+                            </div>
+                            <div class="faq-item">
+                                <div class="faq-question cursor-pointer p-4 rounded-lg bg-gray-50 dark:bg-gray-700 flex justify-between items-center" onclick="toggleFAQ(6)">
+                                    <div class="flex items-center"><span class="text-lg font-bold faq-number mr-3">6.</span><span class="text-gray-800 dark:text-gray-200 font-medium">Əgər nəticə tapılmasa nə etməliyəm?</span></div>
+                                    <svg id="faq-icon-6" class="w-5 h-5 text-gray-500 dark:text-gray-400 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                                <div id="faq-answer-6" class="faq-answer"><div class="p-4 bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300">Cavab: Kampusu və ID-ni yoxlayın, yenə olmazsa məktəblə əlaqə saxlayın.</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="overlay" class="fixed inset-0 bg-black bg-opacity-80 z-50 hidden flex-col items-center justify-center">
+            <div class="relative flex items-center justify-center">
+                <img id="loading-logo" src="https://i.imgur.com/d0hRX2m.png" alt="Yüklənir"
+                    class="w-28 h-28 object-contain"
+                    onerror="this.onerror=null; this.src='https://placehold.co/112x112/ccc/333?text=Logo';" />
+            </div>
+            <p class="text-white mt-8 text-xl font-normal animate-pulse">MAGİS (16.05.2026) bazasında axtarılır...</p>
+            <p class="text-gray-300 mt-2 text-sm font-light">Səbriniz üçün təşəkkür edirik!</p>
+        </div>
+
+        <div id="toast" class="fixed top-5 right-5 z-100 hidden transform transition-all duration-500 translate-x-full">
+            <div id="toast-content" class="bg-white border-l-8 p-4 rounded-xl shadow-2xl flex items-start min-w-[350px]">
+                <div id="toast-icon" class="mr-3 mt-0.5"></div>
+                <div class="flex-1">
+                    <p id="toast-message" class="text-base font-normal text-gray-800"></p>
+                </div>
+                <button onclick="hideToast()" class="ml-4 p-1 rounded-full text-red-600 hover:bg-red-100 transition duration-150">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <div id="application-modal" class="modal-overlay" onclick="closeApplicationModalOnBackdrop(event)">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3>📝 Müraciət Forması</h3>
+                <button class="modal-close" onclick="closeApplicationModal()">&times;</button>
+            </div>
+            <iframe class="modal-iframe" src="https://tally.so/r/dWk6Bo?transparentBackground=1&formEventsForwarding=1" title="Müraciət Forması"></iframe>
+        </div>
+    </div>
+
+    <script>
+        // ==================== TƏHLÜKƏSİZ API LINKİ (SİZİN APPS SCRIPT) ====================
+        const API_URL = "https://script.google.com/macros/s/AKfycbzR2OZYvoh02o4D3GUoWOhcsYqAD3s056A0LkN7X6BABExE7UXWrglcAfRVmgXjdDYt/exec";
+
+        let lastPreviewUrl = "";
+        let toastTimeout;
+        const TOAST_DURATION = 5000;
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.panel-section').forEach(section => section.classList.add('hidden'));
+            document.getElementById(sectionId).classList.remove('hidden');
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            if (sectionId === 'search-section') document.getElementById('nav-search').classList.add('active');
+            else if (sectionId === 'faq-section') document.getElementById('nav-faq').classList.add('active');
+            else if (sectionId === 'apply-section') document.getElementById('nav-apply').classList.add('active');
+        }
+
+        function toggleFAQ(id) {
+            const answer = document.getElementById(`faq-answer-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            const isOpen = answer.classList.contains('open');
+            document.querySelectorAll('.faq-answer').forEach(item => item.classList.remove('open'));
+            document.querySelectorAll('[id^="faq-icon-"]').forEach(ic => ic.classList.remove('rotate-180'));
+            if (!isOpen) {
+                answer.classList.add('open');
+                if (icon) icon.classList.add('rotate-180');
+            }
+        }
+
+        function validateID(input) {
+            const id = input.value.trim();
+            const validationIcon = document.getElementById('id-validation');
+            if (id.length === 10 && /^\d{10}$/.test(id)) validationIcon.classList.add('show');
+            else validationIcon.classList.remove('show');
+        }
+
+        function playSuccessTone() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                if (!audioContext) return;
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                oscillator.type = 'triangle';
+                gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.01);
+                oscillator.frequency.setValueAtTime(784, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.15);
+                gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.15);
+                oscillator.frequency.setValueAtTime(1047, audioContext.currentTime + 0.15);
+                gainNode.gain.linearRampToValueAtTime(0.3, audioContext.currentTime + 0.20);
+                gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.35);
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.4);
+            } catch (e) { console.error(e); }
+        }
+
+        function playErrorTone() {
+            try {
+                const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                if (!audioContext) return;
+                const oscillator = audioContext.createOscillator();
+                const gainNode = audioContext.createGain();
+                oscillator.connect(gainNode);
+                gainNode.connect(audioContext.destination);
+                oscillator.type = 'sawtooth';
+                gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.4, audioContext.currentTime + 0.01);
+                oscillator.frequency.setValueAtTime(261, audioContext.currentTime);
+                oscillator.frequency.linearRampToValueAtTime(196, audioContext.currentTime + 0.3);
+                gainNode.gain.linearRampToValueAtTime(0.05, audioContext.currentTime + 0.3);
+                gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + 0.4);
+                oscillator.start();
+                oscillator.stop(audioContext.currentTime + 0.4);
+            } catch (e) { console.error(e); }
+        }
+
+        function hideToast() {
+            const toast = document.getElementById('toast');
+            clearTimeout(toastTimeout);
+            toast.classList.add('translate-x-full');
+            setTimeout(() => toast.classList.add('hidden'), 500);
+        }
+
+        function showNotification(message, type = 'info') {
+            clearTimeout(toastTimeout);
+            const toast = document.getElementById('toast');
+            const content = document.getElementById('toast-content');
+            const msgEl = document.getElementById('toast-message');
+            const iconEl = document.getElementById('toast-icon');
+            msgEl.textContent = message;
+            let borderColor, iconHtml;
+            if (type === 'success') {
+                playSuccessTone();
+                borderColor = 'border-green-500';
+                iconHtml = '<svg class="w-7 h-7 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+            } else if (type === 'error') {
+                playErrorTone();
+                borderColor = 'border-red-500';
+                iconHtml = '<svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+            } else if (type === 'announcement') {
+                playSuccessTone();
+                borderColor = 'border-yellow-500';
+                iconHtml = '<span class="text-3xl">🔔</span>';
+            } else {
+                playSuccessTone();
+                borderColor = 'border-blue-500';
+                iconHtml = '<svg class="w-7 h-7 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>';
+            }
+            const isDark = document.documentElement.classList.contains('dark');
+            content.className = `${isDark ? 'bg-gray-800' : 'bg-white'} border-l-8 ${borderColor} p-4 rounded-xl shadow-2xl flex items-start min-w-[350px]`;
+            msgEl.className = `text-base font-normal ${isDark ? 'text-gray-200' : 'text-gray-800'}`;
+            iconEl.innerHTML = iconHtml;
+            toast.classList.add('translate-x-full');
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.remove('translate-x-full'), 10);
+            toastTimeout = setTimeout(() => hideToast(), TOAST_DURATION);
+        }
+
+        function setInitialTheme() {
+            document.documentElement.classList.add('dark');
+            updateThemeIcons(true);
+        }
+        function updateThemeIcons(isDark) {
+            document.getElementById('sun-icon').classList.toggle('hidden', isDark);
+            document.getElementById('moon-icon').classList.toggle('hidden', !isDark);
+        }
+        function toggleTheme() {
+            const isDark = !document.documentElement.classList.contains('dark');
+            document.documentElement.classList.toggle('dark', isDark);
+            updateThemeIcons(isDark);
+        }
+
+        function openApplicationModal() {
+            const modal = document.getElementById('application-modal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.getElementById('nav-apply').classList.add('active');
+            setTimeout(() => document.getElementById('nav-apply').classList.remove('active'), 300);
+        }
+        function closeApplicationModal() {
+            const modal = document.getElementById('application-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        function closeApplicationModalOnBackdrop(event) {
+            if (event.target === document.getElementById('application-modal')) closeApplicationModal();
+        }
+
+        async function viewResult() {
+            const idInput = document.getElementById("id");
+            const campusSelect = document.getElementById("exam");
+            const idValue = idInput.value.trim();
+            const campusValue = campusSelect.value;
+            const campusText = campusSelect.options[campusSelect.selectedIndex]?.text || "";
+
+            if (!idValue || !campusValue) {
+                showNotification("Kampusu və ID-ni daxil edin", "error");
+                return;
+            }
+            if (!/^\d{10}$/.test(idValue)) {
+                showNotification("ID 10 rəqəm olmalıdır", "error");
+                return;
+            }
+
+            const overlay = document.getElementById("overlay");
+            const resultContainer = document.getElementById("result-container");
+            const studentInfoSection = document.getElementById("student-info-section");
+
+            resultContainer.classList.add("opacity-0", "hidden");
+            overlay.classList.remove("hidden");
+            overlay.classList.add("flex");
+            document.getElementById('loading-logo').classList.add('loading-logo');
+
+            if (document.getElementById("remember-me").checked) {
+                localStorage.setItem("remembered_id_v6", idValue);
+                localStorage.setItem("remembered_campus_v6", campusValue);
+            } else {
+                localStorage.removeItem("remembered_id_v6");
+                localStorage.removeItem("remembered_campus_v6");
+            }
+
+            try {
+                const response = await fetch(`${API_URL}?id=${encodeURIComponent(idValue)}&campus=${encodeURIComponent(campusValue)}`);
+                const data = await response.json();
+
+                document.getElementById('loading-logo').classList.remove('loading-logo');
+                overlay.classList.add("hidden");
+
+                if (data.status === "found") {
+                    showNotification(`"${data.name}" üçün nəticə yüklənir`, "success");
+                    lastPreviewUrl = data.preview;
+                    document.getElementById("resultFrame").src = data.preview;
+                    document.getElementById("student-fullname").textContent = data.name;
+                    document.getElementById("student-class").textContent = "IV (V sinfə qəbul)";
+                    document.getElementById("student-id-display").textContent = idValue;
+                    document.getElementById("exam-name-display").textContent = campusText;
+                    studentInfoSection.classList.remove("hidden");
+                    resultContainer.classList.remove("hidden");
+                    setTimeout(() => resultContainer.classList.remove("opacity-0"), 50);
+                    resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    showNotification(`ID tapılmadı (${campusText})`, "error");
+                }
+            } catch (err) {
+                document.getElementById('loading-logo').classList.remove('loading-logo');
+                overlay.classList.add("hidden");
+                showNotification("Server xətası, sonra yenə cəhd edin", "error");
+            }
+        }
+
+        function resetSearch() {
+            const resultContainer = document.getElementById("result-container");
+            resultContainer.classList.add("opacity-0");
+            setTimeout(() => {
+                resultContainer.classList.add("hidden");
+                document.getElementById("resultFrame").src = "";
+                lastPreviewUrl = "";
+                document.getElementById("resultForm").reset();
+                document.getElementById("student-info-section").classList.add("hidden");
+                showNotification("Axtarış sıfırlandı.", "info");
+            }, 300);
+        }
+
+        function downloadResult() {
+            if (lastPreviewUrl) window.open(lastPreviewUrl, '_blank');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setInitialTheme();
+            const rememberedId = localStorage.getItem("remembered_id_v6");
+            const rememberedCampus = localStorage.getItem("remembered_campus_v6");
+            if (rememberedId) {
+                document.getElementById("id").value = rememberedId;
+                document.getElementById("remember-me").checked = true;
+                validateID(document.getElementById("id"));
+            }
+            if (rememberedCampus) document.getElementById("exam").value = rememberedCampus;
+            showSection('search-section');
+            setTimeout(() => {
+                showNotification("MAGİS (16.05.2026) İmtahan nəticələri portalına xoş gəlmisiniz!", 'announcement');
+            }, 500);
+            function updateClock() {
+                const now = new Date();
+                const days = ['Bazar', 'Bazar ertəsi', 'Çərşənbə axşamı', 'Çərşənbə', 'Cümə axşamı', 'Cümə', 'Şənbə'];
+                const months = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'İyun', 'İyul', 'Avqust', 'Sentyabr', 'Oktyabr', 'Noyabr', 'Dekabr'];
+                const timeString = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+                const dateString = `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}, ${days[now.getDay()]}`;
+                if (document.getElementById('live-time')) document.getElementById('live-time').textContent = timeString;
+                if (document.getElementById('live-date')) document.getElementById('live-date').textContent = dateString;
+            }
+            setInterval(updateClock, 1000);
+            updateClock();
+        });
+    </script>
+</body>
+
+</html>
