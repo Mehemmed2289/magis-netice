@@ -840,11 +840,11 @@
             function updateClock() {
                 const now = new Date();
                 const days = ['Bazar', 'Bazar ertəsi', 'Çərşənbə axşamı', 'Çərşənbə', 'Cümə axşamı', 'Cümə', 'Şənbə'];
-                const months = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'İyiun', 'İyul', 'Avqust', 'Sentyabr', 'Oktyabr', 'Noyabr', 'Dekabr'];
+                const months = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'İyun', 'İyul', 'Avqust', 'Sentyabr', 'Oktyabr', 'Noyabr', 'Dekabr'];
                 const timeString = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
                 const dateString = `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}, ${days[now.getDay()]}`;
                 if (document.getElementById('live-time')) document.getElementById('live-time').textContent = timeString;
-                if (document.getElementById('live-date')) document.getElementById('live-date').textConte = dateString;
+                if (document.getElementById('live-date')) document.getElementById('live-date').textContent = dateString;
             }
             setInterval(updateClock, 1000);
             updateClock();
