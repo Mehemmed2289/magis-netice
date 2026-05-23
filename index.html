@@ -3,6 +3,10 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Azərbaycan Beynəlxalq Maarif | MAGİS (16.05.2026) Nəticələri</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
@@ -42,11 +46,11 @@
             background-color: #00525d;
             color: #fcfcfc;
             transition: background-color 0.3s, color 0.3s;
-            padding-top: 220px !important;
+            padding-top: 180px !important;
         }
 
         @media (min-width: 640px) {
-            body { padding-top: 210px !important; }
+            body { padding-top: 180px !important; }
         }
 
         .dark body {
@@ -357,15 +361,8 @@
 
 <body class="bg-primary-dark">
 
-    <!-- MAGİS - Üst Bildiriş Paneli -->
-    <div class="bg-yellow-500 text-gray-900 font-bold py-2 text-center text-xs sm:text-sm md:text-base tracking-wider fixed top-0 left-0 w-full z-50 flex items-center justify-center gap-2 shadow-md">
-        <span>🎓</span>
-        <span>MAGİS (16.05.2026) İMTAHAN NƏTİCƏLƏRİ</span>
-        <span class="bg-gray-900 text-yellow-400 text-[10px] px-2 py-0.5 rounded-full font-extrabold animate-pulse">AKTİV</span>
-    </div>
-
-    <!-- Başlıq / Header -->
-    <header class="bg-white/20 dark:bg-black/30 header-bg shadow-xl fixed top-[36px] sm:top-[40px] left-0 w-full z-50 backdrop-blur-xl border-b border-white/10">
+    <!-- Başlıq / Header (artıq sarı panel yoxdur, top:0) -->
+    <header class="bg-white/20 dark:bg-black/30 header-bg shadow-xl fixed top-0 left-0 w-full z-50 backdrop-blur-xl border-b border-white/10">
         <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
             <div class="flex items-center space-x-3 sm:space-x-5">
                 <img id="school-logo" src="https://i.imgur.com/a3FuVV8.png" alt="Okul Logosu"
@@ -418,8 +415,8 @@
         </div>
     </header>
 
-    <!-- Saat və Tarix Paneli -->
-    <div class="bg-white/10 dark:bg-black/20 backdrop-blur-md border-b border-white/10 fixed top-[160px] sm:top-[155px] left-0 w-full z-40">
+    <!-- Saat və Tarix Paneli (top dəyəri tənzimlənib) -->
+    <div class="bg-white/10 dark:bg-black/20 backdrop-blur-md border-b border-white/10 fixed top-[120px] sm:top-[120px] left-0 w-full z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
             <div class="flex justify-center items-center">
                 <div class="time-container">
@@ -597,7 +594,7 @@
     </div>
 
     <script>
-        // ==================== SİZİN APPS SCRIPT URL (tam versiya) ====================
+        // ==================== SİZİN APPS SCRIPT URL ====================
         const API_URL = "https://script.google.com/macros/s/AKfycbzIkWLU7u8iIW7phnH7HiQDrDpeyf7Od1JjL7PINSbUzwyYV2PC7YlFdn1vSwP2dZ5Y/exec";
 
         let lastDownloadUrl = "";
@@ -787,7 +784,7 @@
                 if (data.status === "found") {
                     showNotification(`"${data.name}" üçün nəticə yüklənir`, "success");
                     lastPreviewUrl = data.preview;
-                    lastDownloadUrl = data.download || data.preview; // download link varsa istifadə et
+                    lastDownloadUrl = data.download || data.preview;
                     document.getElementById("resultFrame").src = data.preview;
                     document.getElementById("student-fullname").textContent = data.name;
                     document.getElementById("student-class").textContent = "IV (V sinfə qəbul)";
@@ -843,11 +840,11 @@
             function updateClock() {
                 const now = new Date();
                 const days = ['Bazar', 'Bazar ertəsi', 'Çərşənbə axşamı', 'Çərşənbə', 'Cümə axşamı', 'Cümə', 'Şənbə'];
-                const months = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'İyun', 'İyul', 'Avqust', 'Sentyabr', 'Oktyabr', 'Noyabr', 'Dekabr'];
+                const months = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'İyiun', 'İyul', 'Avqust', 'Sentyabr', 'Oktyabr', 'Noyabr', 'Dekabr'];
                 const timeString = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
                 const dateString = `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}, ${days[now.getDay()]}`;
                 if (document.getElementById('live-time')) document.getElementById('live-time').textContent = timeString;
-                if (document.getElementById('live-date')) document.getElementById('live-date').textContent = dateString;
+                if (document.getElementById('live-date')) document.getElementById('live-date').textConte = dateString;
             }
             setInterval(updateClock, 1000);
             updateClock();
