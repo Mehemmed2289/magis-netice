@@ -780,7 +780,7 @@
                 overlay.classList.add("hidden");
 
                 if (data.status === "found") {
-                    showNotification(`"${data.name}" üçün nəticə yüklənir`, "success");
+                    showNotification(`"${data.name}" üçün nəticə tapıldı`, "success");
                     lastPreviewUrl = data.preview;
                     lastDownloadUrl = data.download || data.preview;
                     document.getElementById("resultFrame").src = data.preview;
